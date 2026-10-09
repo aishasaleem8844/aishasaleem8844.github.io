@@ -110,7 +110,11 @@
       }
       body {
         margin: 0;
-        background: var(--white);
+        /* Faint dot grid behind the whole page; tinted bands are translucent so it shows through. */
+        background:
+          radial-gradient(rgba(24, 134, 75, 0.13) 1.1px, transparent 1.3px) 0
+            0 / 22px 22px,
+          var(--white);
         color: var(--ink);
         font:
           400 1rem/1.7 Poppins,
@@ -268,14 +272,22 @@
 
       /* Hero */
       .hero-band {
-        background: var(--mint);
+        background:
+          radial-gradient(rgba(24, 134, 75, 0.16) 1.1px, transparent 1.3px) 0
+            0 / 22px 22px,
+          radial-gradient(
+            50% 60% at 85% 20%,
+            rgba(242, 106, 33, 0.14),
+            transparent 70%
+          ),
+          var(--mint);
         overflow: hidden;
       }
       .hero {
         display: grid;
         gap: 3rem;
         align-items: center;
-        padding-block: clamp(2.5rem, 7vw, 5rem) clamp(3.5rem, 8vw, 6rem);
+        padding-block: clamp(2.5rem, 7vw, 5rem) clamp(5rem, 9vw, 7rem);
       }
       .badge {
         display: inline-flex;
@@ -441,7 +453,7 @@
       }
 
       .strip {
-        background: var(--mint-2);
+        background: rgba(241, 251, 242, 0.85);
         border-block: 1px solid var(--line);
       }
       .strip-in {
@@ -471,10 +483,77 @@
 
       /* Sections */
       .section {
+        position: relative;
+        isolation: isolate;
         padding-block: clamp(4rem, 9vw, 6.5rem);
       }
       .tinted {
-        background: var(--mint-2);
+        background: rgba(241, 251, 242, 0.75);
+      }
+      /* Clip the glows here rather than on body, which would leak to the viewport and still pan on phones. */
+      main {
+        overflow-x: clip;
+      }
+      /* Soft glows behind sections. Gradients only, no blur filter, so they cost nothing to paint. */
+      #experience::before,
+      #experience::after,
+      #projects::before,
+      #projects::after,
+      #contact::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        width: 34rem;
+        height: 34rem;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      #experience::before {
+        top: 2rem;
+        left: -14rem;
+        background: radial-gradient(
+          closest-side,
+          rgba(24, 134, 75, 0.16),
+          transparent
+        );
+      }
+      #experience::after {
+        bottom: -6rem;
+        right: -14rem;
+        background: radial-gradient(
+          closest-side,
+          rgba(242, 106, 33, 0.13),
+          transparent
+        );
+      }
+      #projects::before {
+        top: 22%;
+        right: -16rem;
+        background: radial-gradient(
+          closest-side,
+          rgba(242, 106, 33, 0.12),
+          transparent
+        );
+      }
+      #projects::after {
+        bottom: 12%;
+        left: -16rem;
+        background: radial-gradient(
+          closest-side,
+          rgba(24, 134, 75, 0.15),
+          transparent
+        );
+      }
+      #contact::before {
+        top: -4rem;
+        left: 50%;
+        width: 48rem;
+        translate: -50% 0;
+        background: radial-gradient(
+          closest-side,
+          rgba(24, 134, 75, 0.14),
+          transparent
+        );
       }
       .head {
         text-align: center;
@@ -929,6 +1008,153 @@
         font-weight: 600;
       }
 
+      /* Impact numbers card, overlapping the bottom of the hero. */
+      .stats-wrap {
+        position: relative;
+        z-index: 2;
+        margin-block: -3rem 2.5rem;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--line);
+        box-shadow: var(--shadow);
+      }
+      .stats li {
+        display: grid;
+        align-content: start;
+        gap: 0.2rem;
+        padding: 1.25rem 1.5rem;
+        background: var(--white);
+      }
+      .stats strong {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        color: var(--green-dark);
+        font-variant-numeric: tabular-nums;
+      }
+      .stats li:nth-child(even) strong {
+        color: var(--orange-text);
+      }
+      .stats span {
+        color: var(--muted);
+        font-size: 0.875rem;
+        line-height: 1.45;
+      }
+      @media (min-width: 52rem) {
+        .stats {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      /* Controls inside the interactive mockups (24px minimum targets). */
+      .m-tabs,
+      .m-prompts {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+      }
+      .m-tabs button,
+      .m-prompts button {
+        min-height: 26px;
+        padding: 3px 11px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--white);
+        color: var(--ink);
+        font: inherit;
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background-color 0.2s,
+          color 0.2s,
+          border-color 0.2s;
+      }
+      @media (max-width: 26rem) {
+        /* The mockup is zoomed to 0.82 here; 30px keeps controls above the 24px target minimum. */
+        .m-tabs button,
+        .m-prompts button {
+          min-height: 30px;
+        }
+      }
+      .m-tabs button:hover,
+      .m-prompts button:hover {
+        border-color: var(--green);
+      }
+      .m-tabs button[aria-pressed="true"],
+      .m-prompts button[aria-pressed="true"] {
+        background: var(--green);
+        border-color: var(--green);
+        color: var(--white);
+      }
+      .m-count {
+        margin-left: auto;
+        color: #5b6670;
+      }
+      .m-rows-fixed {
+        min-height: 213px;
+      }
+      /* Rows use display: flex, which would otherwise override the hidden attribute. */
+      .m-rows [hidden] {
+        display: none;
+      }
+      .m-log {
+        display: grid;
+        gap: 10px;
+      }
+      .msg.ai p {
+        min-height: 2.8em;
+      }
+      .m-bars i {
+        transition: height 0.5s ease;
+      }
+
+      /* Cursor spotlight on cards and project panels. */
+      .card,
+      .shot {
+        position: relative;
+        isolation: isolate;
+      }
+      @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+        .card::before,
+        .shot::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: -1;
+          border-radius: inherit;
+          opacity: 0;
+          pointer-events: none;
+          background: radial-gradient(
+            260px circle at var(--x, 50%) var(--y, 50%),
+            rgba(24, 134, 75, 0.14),
+            transparent 70%
+          );
+          transition: opacity 0.3s ease;
+        }
+        .card:hover::before,
+        .shot:hover::before {
+          opacity: 1;
+        }
+        .m-rows div:not([hidden]) {
+          animation: row-in 0.25s ease both;
+        }
+        @keyframes row-in {
+          from {
+            opacity: 0;
+            translate: 0 4px;
+          }
+        }
+      }
+
       /* Contact */
       .cta {
         position: relative;
@@ -1027,10 +1253,18 @@
         .hero > div:first-child > * {
           animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
         }
-        .hero > div:first-child > :nth-child(2) { animation-delay: 0.08s; }
-        .hero > div:first-child > :nth-child(3) { animation-delay: 0.16s; }
-        .hero > div:first-child > :nth-child(4) { animation-delay: 0.24s; }
-        .hero > div:first-child > :nth-child(5) { animation-delay: 0.32s; }
+        .hero > div:first-child > :nth-child(2) {
+          animation-delay: 0.08s;
+        }
+        .hero > div:first-child > :nth-child(3) {
+          animation-delay: 0.16s;
+        }
+        .hero > div:first-child > :nth-child(4) {
+          animation-delay: 0.24s;
+        }
+        .hero > div:first-child > :nth-child(5) {
+          animation-delay: 0.32s;
+        }
         .visual img {
           animation: settle 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
         }
@@ -1041,32 +1275,61 @@
         .cta::after {
           animation: float 5s ease-in-out infinite;
         }
-        .tile-2 { animation-duration: 6s; animation-delay: -1.5s; }
-        .tile-3 { animation-duration: 5.5s; animation-delay: -3s; }
-        .tile-4 { animation-duration: 7s; animation-delay: -2s; }
-        .cta::after { animation-delay: -2.5s; }
+        .tile-2 {
+          animation-duration: 6s;
+          animation-delay: -1.5s;
+        }
+        .tile-3 {
+          animation-duration: 5.5s;
+          animation-delay: -3s;
+        }
+        .tile-4 {
+          animation-duration: 7s;
+          animation-delay: -2s;
+        }
+        .cta::after {
+          animation-delay: -2.5s;
+        }
         .spark {
           animation: twinkle 3s ease-in-out infinite;
         }
-        .s2 { animation-delay: -0.6s; }
-        .s3 { animation-delay: -1.2s; }
-        .s4 { animation-delay: -1.8s; }
-        .s5 { animation-delay: -2.4s; }
+        .s2 {
+          animation-delay: -0.6s;
+        }
+        .s3 {
+          animation-delay: -1.2s;
+        }
+        .s4 {
+          animation-delay: -1.8s;
+        }
+        .s5 {
+          animation-delay: -2.4s;
+        }
 
         /* Hover lifts. */
-        .btn:hover { translate: 0 -2px; }
+        .btn:hover {
+          translate: 0 -2px;
+        }
         /* Cards and chips lift with transform, since the scroll reveal animates their translate. */
         .card,
         .tech li,
         .mock {
-          transition: transform 0.25s ease, translate 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+          transition:
+            transform 0.25s ease,
+            translate 0.25s ease,
+            box-shadow 0.25s ease,
+            border-color 0.25s ease;
         }
         .card:hover {
           transform: translateY(-6px);
           box-shadow: 0 20px 48px rgba(21, 60, 35, 0.16);
         }
-        .card .icon { transition: transform 0.3s ease; }
-        .card:hover .icon { transform: rotate(0deg) scale(1.08); }
+        .card .icon {
+          transition: transform 0.3s ease;
+        }
+        .card:hover .icon {
+          transform: rotate(0deg) scale(1.08);
+        }
         .tech li:hover {
           transform: translateY(-3px);
           border-color: var(--green);
@@ -1075,8 +1338,12 @@
           translate: 0 -8px;
           box-shadow: 0 28px 56px rgba(21, 60, 35, 0.2);
         }
-        .strip li { transition: color 0.2s ease; }
-        .strip li:hover { color: var(--green-dark); }
+        .strip li {
+          transition: color 0.2s ease;
+        }
+        .strip li:hover {
+          color: var(--green-dark);
+        }
 
         /* Scroll effects, where the browser supports scroll-driven animations; elsewhere content is simply shown. */
         @supports (animation-timeline: view()) {
@@ -1089,6 +1356,15 @@
             animation: rise linear both;
             animation-timeline: view();
             animation-range: entry 0% entry 40%;
+          }
+          /* Experience cards slide in from their own side: left column from the left, right from the right. */
+          .card:nth-child(odd) {
+            animation-name: from-left;
+            animation-range: entry 0% cover 30%;
+          }
+          .card:nth-child(even) {
+            animation-name: from-right;
+            animation-range: entry 0% cover 30%;
           }
           .m-bars i {
             transform-origin: bottom;
@@ -1117,12 +1393,66 @@
           }
         }
 
-        @keyframes rise { from { opacity: 0; translate: 0 18px; } }
-        @keyframes settle { from { scale: 0.94; } }
-        @keyframes float { 50% { translate: 0 -10px; } }
-        @keyframes twinkle { 50% { scale: 0.45; opacity: 0.5; } }
-        @keyframes grow-y { from { scale: 1 0; } }
-        @keyframes grow-x { from { scale: 0 1; } }
+        #experience::before,
+        #experience::after,
+        #projects::before,
+        #projects::after {
+          animation: drift 18s ease-in-out infinite;
+        }
+        #experience::after,
+        #projects::after {
+          animation-delay: -9s;
+        }
+        @keyframes drift {
+          50% {
+            translate: 3rem -2rem;
+          }
+        }
+
+        @keyframes rise {
+          from {
+            opacity: 0;
+            translate: 0 18px;
+          }
+        }
+        @keyframes from-left {
+          from {
+            opacity: 0;
+            translate: -90px 0;
+          }
+        }
+        @keyframes from-right {
+          from {
+            opacity: 0;
+            translate: 90px 0;
+          }
+        }
+        @keyframes settle {
+          from {
+            scale: 0.94;
+          }
+        }
+        @keyframes float {
+          50% {
+            translate: 0 -10px;
+          }
+        }
+        @keyframes twinkle {
+          50% {
+            scale: 0.45;
+            opacity: 0.5;
+          }
+        }
+        @keyframes grow-y {
+          from {
+            scale: 1 0;
+          }
+        }
+        @keyframes grow-x {
+          from {
+            scale: 0 1;
+          }
+        }
       }
     </style>
   </head>
@@ -1224,6 +1554,28 @@
             ><i class="spark s5" aria-hidden="true"></i>
           </div>
         </section>
+      </div>
+
+      <div class="wrap stats-wrap">
+        <ul class="stats" aria-label="At a glance">
+          <li>
+            <strong data-count="7" data-suffix="+">7+</strong
+            ><span>Years shipping production SaaS</span>
+          </li>
+          <li>
+            <strong data-count="1.5" data-decimals="1" data-suffix="M+"
+              >1.5M+</strong
+            ><span>Agents on a platform I built UI for</span>
+          </li>
+          <li>
+            <strong data-count="6">6</strong
+            ><span>Industries, from real estate to AI</span>
+          </li>
+          <li>
+            <strong data-count="4">4</strong
+            ><span>Companies across seven years</span>
+          </li>
+        </ul>
       </div>
 
       <div class="strip">
@@ -1623,41 +1975,89 @@
               </ul>
             </div>
             <figure class="shot">
-              <div class="mock" aria-hidden="true">
-                <div class="mock-bar">
+              <div
+                class="mock"
+                data-demo="filter"
+                role="group"
+                aria-label="Interactive demo: transactions dashboard"
+              >
+                <div class="mock-bar" aria-hidden="true">
                   <i></i><i></i><i></i><span>Transactions</span>
                 </div>
                 <div class="mock-body m-dash">
-                  <div class="m-side"><b></b><b></b><b></b><b></b><b></b></div>
+                  <div class="m-side" aria-hidden="true">
+                    <b></b><b></b><b></b><b></b><b></b>
+                  </div>
                   <div>
                     <div class="m-stats">
                       <div><small>Active</small><strong>128</strong></div>
                       <div><small>Pending</small><strong>34</strong></div>
                       <div><small>Closed</small><strong>$4.2M</strong></div>
                     </div>
-                    <div class="m-rows">
-                      <div>
+                    <div class="m-tabs">
+                      <button
+                        type="button"
+                        aria-pressed="true"
+                        data-filter="all"
+                      >
+                        All
+                      </button>
+                      <button
+                        type="button"
+                        aria-pressed="false"
+                        data-filter="active"
+                      >
+                        Active
+                      </button>
+                      <button
+                        type="button"
+                        aria-pressed="false"
+                        data-filter="pending"
+                      >
+                        Pending
+                      </button>
+                      <button
+                        type="button"
+                        aria-pressed="false"
+                        data-filter="closed"
+                      >
+                        Closed
+                      </button>
+                      <span class="m-count" aria-live="polite"
+                        >6 transactions</span
+                      >
+                    </div>
+                    <div class="m-rows m-rows-fixed">
+                      <div data-status="closed">
                         <span>1248 Oak Street</span
                         ><em class="pill ok">Closed</em>
                       </div>
-                      <div>
+                      <div data-status="pending">
                         <span>77 Harbor View</span
                         ><em class="pill warn">Pending</em>
                       </div>
-                      <div>
+                      <div data-status="active">
                         <span>310 Elm Avenue</span
                         ><em class="pill info">Active</em>
                       </div>
-                      <div>
+                      <div data-status="active">
                         <span>5 Lakeside Court</span
                         ><em class="pill info">Active</em>
+                      </div>
+                      <div data-status="closed">
+                        <span>92 Birch Lane</span
+                        ><em class="pill ok">Closed</em>
+                      </div>
+                      <div data-status="pending">
+                        <span>18 Ridge Road</span
+                        ><em class="pill warn">Pending</em>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <figcaption>
-                Illustrative mockup, not a product screenshot
+                Interactive mockup: try the filters. Not a product screenshot.
               </figcaption>
             </figure>
           </article>
@@ -1684,26 +2084,48 @@
               </ul>
             </div>
             <figure class="shot">
-              <div class="mock" aria-hidden="true">
-                <div class="mock-bar">
+              <div
+                class="mock"
+                data-demo="chat"
+                role="group"
+                aria-label="Interactive demo: AI assistant"
+              >
+                <div class="mock-bar" aria-hidden="true">
                   <i></i><i></i><i></i><span>Assistant</span>
                 </div>
                 <div class="mock-body m-chat">
-                  <div class="msg me">Summarise this quarter's highlights</div>
-                  <div class="msg ai">
-                    Revenue grew in every region this quarter, led by
-                    subscriptions.
-                    <div class="m-bars">
-                      <i style="--h: 38%"></i><i style="--h: 52%"></i
-                      ><i style="--h: 47%"></i><i style="--h: 66%"></i
-                      ><i style="--h: 74%"></i><i style="--h: 92%"></i>
+                  <div class="m-log" aria-hidden="true">
+                    <div class="msg me">
+                      Summarise this quarter's highlights
+                    </div>
+                    <div class="msg ai">
+                      <p>
+                        Revenue grew in every region this quarter, led by
+                        subscriptions.
+                      </p>
+                      <div class="m-bars">
+                        <i style="--h: 38%"></i><i style="--h: 52%"></i
+                        ><i style="--h: 47%"></i><i style="--h: 66%"></i
+                        ><i style="--h: 74%"></i><i style="--h: 92%"></i>
+                      </div>
                     </div>
                   </div>
-                  <div class="m-input">Ask about any call<b></b></div>
+                  <div class="m-prompts">
+                    <button type="button" aria-pressed="true" data-q="0">
+                      Quarter highlights
+                    </button>
+                    <button type="button" aria-pressed="false" data-q="1">
+                      Biggest risks
+                    </button>
+                    <button type="button" aria-pressed="false" data-q="2">
+                      Guidance vs last year
+                    </button>
+                  </div>
+                  <p class="sr-only" aria-live="polite" id="chat-status"></p>
                 </div>
               </div>
               <figcaption>
-                Illustrative mockup, not a product screenshot
+                Interactive mockup: pick a question. Not a product screenshot.
               </figcaption>
             </figure>
           </article>
@@ -1916,6 +2338,108 @@
     <footer class="wrap">© 2026 Aisha Saleem</footer>
 
     <script>
+      const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // Count the impact numbers up once they scroll into view.
+      if (!still) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (!e.isIntersecting) continue;
+              io.unobserve(e.target);
+              const el = e.target,
+                to = +el.dataset.count,
+                dec = +(el.dataset.decimals || 0),
+                suffix = el.dataset.suffix || "",
+                t0 = performance.now();
+              const step = (now) => {
+                const t = Math.min((now - t0) / 1400, 1);
+                el.textContent =
+                  (to * (1 - (1 - t) ** 3)).toFixed(dec) + suffix;
+                if (t < 1) requestAnimationFrame(step);
+              };
+              requestAnimationFrame(step);
+            }
+          },
+          { threshold: 0.6 },
+        );
+        document
+          .querySelectorAll("[data-count]")
+          .forEach((el) => io.observe(el));
+      }
+
+      // Transactions demo: status filters.
+      const dash = document.querySelector('[data-demo="filter"]');
+      const tabs = dash.querySelectorAll("[data-filter]"),
+        rows = dash.querySelectorAll("[data-status]");
+      tabs.forEach((tab) =>
+        tab.addEventListener("click", () => {
+          const f = tab.dataset.filter;
+          tabs.forEach((t) => t.setAttribute("aria-pressed", t === tab));
+          rows.forEach(
+            (r) => (r.hidden = f !== "all" && r.dataset.status !== f),
+          );
+          const shown = [...rows].filter((r) => !r.hidden).length;
+          dash.querySelector(".m-count").textContent =
+            shown + (shown === 1 ? " transaction" : " transactions");
+        }),
+      );
+
+      // Assistant demo: pick a question, the answer types out and the chart redraws.
+      const chat = document.querySelector('[data-demo="chat"]');
+      const qa = [
+        {
+          q: "Summarise this quarter's highlights",
+          a: "Revenue grew in every region this quarter, led by subscriptions.",
+          h: [38, 52, 47, 66, 74, 92],
+        },
+        {
+          q: "What risks did management flag?",
+          a: "Supply costs and slower enterprise renewals are the main risks flagged for next quarter.",
+          h: [80, 72, 64, 58, 49, 41],
+        },
+        {
+          q: "How does guidance compare to last year?",
+          a: "Full-year guidance is up 8% on last year, with most growth expected in the second half.",
+          h: [44, 48, 55, 61, 70, 79],
+        },
+      ];
+      const prompts = chat.querySelectorAll("[data-q]"),
+        me = chat.querySelector(".msg.me"),
+        answer = chat.querySelector(".msg.ai p"),
+        bars = chat.querySelectorAll(".m-bars i");
+      let run = 0;
+      prompts.forEach((btn) =>
+        btn.addEventListener("click", async () => {
+          const { q, a, h } = qa[btn.dataset.q],
+            mine = ++run;
+          prompts.forEach((b) => b.setAttribute("aria-pressed", b === btn));
+          me.textContent = q;
+          bars.forEach((b, i) => b.style.setProperty("--h", h[i] + "%"));
+          document.getElementById("chat-status").textContent = q + ": " + a;
+          if (still) return void (answer.textContent = a);
+          answer.textContent = "\u2026";
+          await new Promise((r) => setTimeout(r, 450));
+          for (let i = 1; i <= a.length && mine === run; i++) {
+            answer.textContent = a.slice(0, i);
+            await new Promise((r) => setTimeout(r, 16));
+          }
+        }),
+      );
+
+      // Spotlight follows the pointer over cards and project panels.
+      document.addEventListener(
+        "pointermove",
+        (e) => {
+          const el = e.target.closest?.(".card, .shot");
+          if (!el) return;
+          const r = el.getBoundingClientRect();
+          el.style.setProperty("--x", e.clientX - r.left + "px");
+          el.style.setProperty("--y", e.clientY - r.top + "px");
+        },
+        { passive: true },
+      );
+
       const copyBtn = document.querySelector(".copy"),
         status = document.getElementById("copy-status");
       copyBtn.addEventListener("click", async () => {
