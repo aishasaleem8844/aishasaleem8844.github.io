@@ -9,16 +9,8 @@
       content="Aisha Saleem is a full stack frontend developer with seven years building React, Next.js and TypeScript interfaces for enterprise SaaS, plus the Node.js APIs behind them."
     />
     <link rel="canonical" href="https://aishasaleem8844.github.io/" />
-    <meta
-      name="theme-color"
-      content="#F3F5F9"
-      media="(prefers-color-scheme: light)"
-    />
-    <meta
-      name="theme-color"
-      content="#0D1424"
-      media="(prefers-color-scheme: dark)"
-    />
+    <meta name="theme-color" content="#11071F" />
+    <meta name="color-scheme" content="dark" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://aishasaleem8844.github.io/" />
@@ -44,22 +36,21 @@
 
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23101B33'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23F3F5F9' text-anchor='middle'%3EAS%3C/text%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237127BA'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23fff' text-anchor='middle'%3EAS%3C/text%3E%3C/svg%3E"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
     />
+    <!-- Signature logo font, subset to the five letters it draws. -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap&text=Aisha"
+    />
+    <link rel="preload" as="image" href="avatar.webp" />
 
-    <script>
-      // Apply a saved theme before first paint so there is no flash.
-      try {
-        const t = localStorage.getItem("theme");
-        if (t) document.documentElement.dataset.theme = t;
-      } catch {}
-    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -67,6 +58,7 @@
         "name": "Aisha Saleem",
         "jobTitle": "Full Stack Frontend Developer",
         "url": "https://aishasaleem8844.github.io/",
+        "image": "https://aishasaleem8844.github.io/avatar.webp",
         "email": "mailto:aishasaleem8844@gmail.com",
         "address": {
           "@type": "PostalAddress",
@@ -95,40 +87,19 @@
 
     <style>
       :root {
-        --paper: #f3f5f9;
-        --ink: #101b33;
-        --muted: #4f5a72;
-        --rule: #d3dae6;
-        --red: #d11a42;
-        --on-red: #ffffff;
-        --blue: #1f46a6;
+        --bg: #11071f;
+        --card: #150a28;
+        --violet: #7127ba;
+        --violet-2: #9857d3;
+        --accent: #c29bff;
+        --blue: #7fb2ff;
+        --text: #ffffff;
+        --muted: #c9c1da;
+        --line: rgba(255, 255, 255, 0.09);
         --wrap: 72rem;
         --gutter: clamp(1rem, 4vw, 2.5rem);
-        color-scheme: light;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root:not([data-theme="light"]) {
-          --paper: #0d1424;
-          --ink: #e7ecf5;
-          --muted: #9da8bf;
-          --rule: #26324d;
-          --red: #ff6f8a;
-          --on-red: #0d1424;
-          --blue: #9ab8ff;
-          color-scheme: dark;
-        }
-      }
-      :root[data-theme="dark"] {
-        --paper: #0d1424;
-        --ink: #e7ecf5;
-        --muted: #9da8bf;
-        --rule: #26324d;
-        --red: #ff6f8a;
-        --on-red: #0d1424;
-        --blue: #9ab8ff;
         color-scheme: dark;
       }
-
       *,
       *::before,
       *::after {
@@ -141,39 +112,38 @@
       }
       body {
         margin: 0;
-        background: var(--paper);
-        color: var(--ink);
+        background: var(--bg);
+        color: var(--text);
         font:
-          400 1.125rem/1.6 Archivo,
+          400 1rem/1.7 Poppins,
           system-ui,
           sans-serif;
         -webkit-font-smoothing: antialiased;
+        overflow-x: clip;
       }
       h1,
       h2,
       h3,
       p,
       ul,
-      ol {
+      figure {
         margin: 0;
       }
-      ul,
-      ol {
+      ul {
         padding: 0;
         list-style: none;
       }
       a {
-        color: var(--blue);
-        text-decoration-thickness: 1px;
-        text-underline-offset: 0.2em;
+        color: inherit;
       }
-      a:hover {
-        text-decoration-thickness: 2px;
+      img {
+        display: block;
+        max-width: 100%;
       }
       :focus-visible {
-        outline: 2px solid var(--red);
+        outline: 2px solid var(--accent);
         outline-offset: 3px;
-        border-radius: 2px;
+        border-radius: 4px;
       }
       .wrap {
         max-width: var(--wrap);
@@ -188,793 +158,1326 @@
         clip-path: inset(50%);
         white-space: nowrap;
       }
+      .accent {
+        color: var(--accent);
+      }
+      .grad {
+        background: linear-gradient(90deg, #9f5cff, #d3a6ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        white-space: nowrap;
+      }
 
       .skip {
         position: absolute;
         left: var(--gutter);
         top: -4rem;
+        z-index: 20;
         padding: 0.5rem 1rem;
-        background: var(--ink);
-        color: var(--paper);
-        border-radius: 6px;
-        z-index: 1;
+        border-radius: 8px;
+        background: var(--text);
+        color: var(--bg);
       }
       .skip:focus {
-        top: 1rem;
+        top: 0.75rem;
       }
 
       /* Header */
-      .top {
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(17, 7, 31, 0.72);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-in {
         display: flex;
         align-items: center;
-        gap: clamp(0.75rem, 3vw, 1.5rem);
-        padding-block: 1.25rem;
+        justify-content: space-between;
+        height: 4.5rem;
       }
-      .mark {
-        font-weight: 800;
-        font-stretch: 125%;
-        color: var(--ink);
+      .logo {
+        font:
+          400 clamp(2rem, 6vw, 2.4rem) / 1 "Mrs Saint Delafield",
+          cursive;
         text-decoration: none;
-        letter-spacing: 0.02em;
-        margin-right: auto;
+        padding-top: 0.35rem;
       }
-      .top nav {
+      .nav nav {
         display: flex;
-        gap: clamp(0.75rem, 3vw, 2rem);
-        font-size: clamp(0.875rem, 3.5vw, 1rem);
+        gap: clamp(0.75rem, 4vw, 2.5rem);
+        font-size: clamp(0.8125rem, 3.6vw, 0.9375rem);
+        font-weight: 500;
       }
-      .top nav a {
-        color: var(--ink);
+      .nav nav a {
         text-decoration: none;
         padding-block: 0.6rem;
+        color: var(--muted);
+        transition: color 0.15s;
       }
-      .top nav a:hover {
-        text-decoration: underline;
+      .nav nav a:hover {
+        color: var(--text);
       }
-      .theme {
+
+      /* Hero */
+      .hero {
+        position: relative;
+        padding-block: clamp(3rem, 8vw, 6rem) clamp(4rem, 9vw, 7rem);
+      }
+      .hero-top {
         display: grid;
-        place-items: center;
-        width: 44px;
-        height: 44px;
-        margin-right: -10px;
-        background: none;
-        border: 0;
+        gap: 2rem;
+        align-items: center;
+      }
+      .avatar {
+        position: relative;
+        width: clamp(8.5rem, 26vw, 13rem);
+        aspect-ratio: 1;
+      }
+      .avatar::before {
+        content: "";
+        position: absolute;
+        inset: -35%;
         border-radius: 50%;
-        color: var(--ink);
-        cursor: pointer;
-        transition: background-color 0.15s;
+        z-index: -1;
+        background: radial-gradient(
+          closest-side,
+          rgba(152, 87, 211, 0.75),
+          rgba(113, 39, 186, 0.25) 55%,
+          transparent
+        );
+        filter: blur(8px);
       }
-      .theme:hover {
-        background: var(--rule);
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow:
+          0 0 0 3px rgba(194, 155, 255, 0.35),
+          0 20px 60px rgba(0, 0, 0, 0.5);
       }
-      .theme svg {
-        width: 20px;
-        height: 20px;
+      .hello {
+        font-size: clamp(1rem, 2.2vw, 1.125rem);
+        font-weight: 500;
       }
-      .theme .moon,
-      :root[data-theme="dark"] .theme .sun {
-        display: none;
+      .kicker {
+        margin-top: 1.75rem;
+        font-size: clamp(1.125rem, 2.6vw, 1.5rem);
+        font-weight: 500;
       }
-      :root[data-theme="dark"] .theme .moon {
-        display: block;
+      .slogan {
+        font-size: clamp(2.5rem, 7.5vw, 4.5rem);
+        line-height: 1.08;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-top: 0.25rem;
       }
-      @media (prefers-color-scheme: dark) {
-        :root:not([data-theme="light"]) .theme .sun {
-          display: none;
-        }
-        :root:not([data-theme="light"]) .theme .moon {
-          display: block;
+      .sub {
+        margin-top: 0.9rem;
+        color: var(--muted);
+        font-size: 0.9375rem;
+      }
+      @media (min-width: 52rem) {
+        .hero-top {
+          grid-template-columns: auto 1fr;
+          gap: clamp(2.5rem, 5vw, 4.5rem);
         }
       }
 
-      /* Hero: the name is set like a design handoff, with live redline measurements. */
-      .hero {
-        padding-block: clamp(3rem, 9vw, 7rem) clamp(4rem, 10vw, 8rem);
-        display: grid;
-        gap: 2.5rem;
-      }
-      .name-wrap {
-        position: relative;
-        width: fit-content;
-        margin-top: 1.75rem;
-      }
-      .name {
-        font-size: clamp(3rem, 16vw, 9.5rem);
-        font-weight: 750;
-        font-stretch: 125%;
-        line-height: 0.92;
-        letter-spacing: -0.025em;
-      }
-      .name span {
-        display: block;
-      }
-      .dim {
-        position: absolute;
-        color: var(--red);
-        background: currentColor;
-      }
-      .dim::before,
-      .dim::after {
-        content: "";
-        position: absolute;
-        background: currentColor;
-      }
-      .dim-x {
-        left: 0;
-        right: 0;
-        top: -1.5rem;
-        height: 1px;
-      }
-      .dim-x::before,
-      .dim-x::after {
-        top: -5px;
-        width: 1px;
-        height: 11px;
-      }
-      .dim-x::before {
-        left: 0;
-      }
-      .dim-x::after {
-        right: 0;
-      }
-      .dim-y {
-        top: 0;
-        bottom: 0;
-        right: -1.75rem;
-        width: 1px;
-      }
-      .dim-y::before,
-      .dim-y::after {
-        left: -5px;
-        width: 11px;
-        height: 1px;
-      }
-      .dim-y::before {
-        top: 0;
-      }
-      .dim-y::after {
-        bottom: 0;
-      }
-      .dim span {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        padding: 0.2em 0.45em;
-        border-radius: 3px;
-        background: var(--red);
-        color: var(--on-red);
-        font-size: 0.75rem;
-        font-weight: 600;
+      .role {
+        margin-top: clamp(3rem, 7vw, 4.5rem);
+        font-size: clamp(1.75rem, 5vw, 3rem);
+        font-weight: 700;
         line-height: 1.2;
-        font-stretch: 100%;
-        font-variant-numeric: tabular-nums;
+        /* Reserve the longest role's height so the page doesn't jump while typing. */
+        min-height: 2.4em;
+      }
+      @media (min-width: 64rem) {
+        .role {
+          min-height: 1.2em;
+        }
+      }
+      .caret {
+        display: inline-block;
+        width: 0.08em;
+        height: 1em;
+        margin-left: 0.06em;
+        vertical-align: -0.12em;
+        background: var(--accent);
       }
       @media (prefers-reduced-motion: no-preference) {
-        .name {
-          animation: stretch 1.4s cubic-bezier(0.2, 0.7, 0.1, 1) 0.2s both;
+        .caret {
+          animation: blink 1s steps(1) infinite;
         }
-        @keyframes stretch {
-          from {
-            font-stretch: 62%;
+        @keyframes blink {
+          50% {
+            opacity: 0;
           }
         }
       }
-
-      .intro {
-        display: grid;
-        gap: 1.75rem;
-        max-width: 36rem;
+      .current {
+        margin-top: 0.5rem;
+        font-size: clamp(1rem, 2.4vw, 1.25rem);
+        font-weight: 500;
       }
-      .lede {
-        font-size: clamp(1.25rem, 2vw, 1.375rem);
-        line-height: 1.45;
-        font-stretch: 105%;
-      }
-      .where {
-        color: var(--muted);
-        font-size: 1rem;
-      }
-      .where strong {
-        color: var(--ink);
+      .current .co {
+        color: var(--blue);
         font-weight: 600;
+      }
+      .summary {
+        margin-top: 1.75rem;
+        max-width: 40rem;
+        color: var(--muted);
+        font-size: 1.0625rem;
       }
       .actions {
         display: flex;
         flex-wrap: wrap;
         gap: 0.75rem;
+        margin-top: 2rem;
       }
       .btn {
         display: inline-flex;
         align-items: center;
-        min-height: 44px;
-        padding: 0.6rem 1.15rem;
-        border: 1px solid var(--ink);
-        border-radius: 6px;
-        color: var(--ink);
-        background: none;
+        min-height: 46px;
+        padding: 0.65rem 1.4rem;
+        border: 1px solid rgba(194, 155, 255, 0.45);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
         text-decoration: none;
         font: inherit;
-        font-size: 1rem;
+        font-size: 0.9375rem;
         font-weight: 600;
-        line-height: 1.2;
         cursor: pointer;
         transition:
-          background-color 0.15s,
-          border-color 0.15s,
-          color 0.15s;
+          background-color 0.2s,
+          border-color 0.2s,
+          box-shadow 0.2s;
       }
       .btn:hover {
-        background: var(--ink);
-        color: var(--paper);
+        background: rgba(194, 155, 255, 0.12);
+        border-color: var(--accent);
       }
       .btn:active {
         transform: translateY(1px);
       }
       .btn-primary {
-        background: var(--ink);
-        color: var(--paper);
+        border-color: transparent;
+        background: linear-gradient(90deg, var(--violet), var(--violet-2));
+        box-shadow: 0 8px 30px rgba(113, 39, 186, 0.45);
       }
       .btn-primary:hover {
-        background: var(--blue);
-        border-color: var(--blue);
-      }
-      .links {
-        display: flex;
-        gap: 1.5rem;
-        font-size: 1rem;
+        background: linear-gradient(90deg, #7f33cc, #a869e0);
+        box-shadow: 0 10px 36px rgba(152, 87, 211, 0.6);
       }
 
-      @media (min-width: 64rem) {
-        .hero {
-          /* Fixed intro column, so it stays put while the name stretches in. */
-          grid-template-columns: minmax(0, 1fr) 24rem;
-          align-items: end;
-          column-gap: clamp(4rem, 5vw, 5rem);
-        }
-        .name {
-          font-size: clamp(6rem, 10vw, 8.5rem);
-        }
-        .intro {
-          padding-bottom: 0.5rem;
-        }
-      }
-
-      /* Sections: heading on the left, content in a readable column on the right. */
+      /* Sections */
       .section {
-        border-top: 1px solid var(--rule);
-        padding-block: clamp(3.5rem, 8vw, 6rem);
-        display: grid;
-        gap: 2rem;
+        padding-block: clamp(4rem, 9vw, 7rem);
       }
-      .section > h2 {
-        font-size: clamp(1.75rem, 4vw, 2.25rem);
-        line-height: 1.15;
+      .title {
+        text-align: center;
+        font-size: clamp(2rem, 5vw, 3rem);
         font-weight: 700;
-        font-stretch: 112%;
         letter-spacing: -0.01em;
+        line-height: 1.15;
       }
-      .body {
-        display: grid;
-        gap: 2.5rem;
-        max-width: 44rem;
-      }
-      .body > p {
+      .note {
+        text-align: center;
         color: var(--muted);
-      }
-      @media (min-width: 64rem) {
-        .section {
-          grid-template-columns: 15rem 1fr;
-          gap: 3rem;
-        }
-      }
-
-      .about p + p {
-        margin-top: 1.25rem;
-      }
-      .about p {
-        color: var(--ink);
-      }
-
-      .project {
-        display: grid;
-        gap: 0.75rem;
-        padding-top: 2.5rem;
-        border-top: 1px solid var(--rule);
-      }
-      .project:first-of-type {
-        padding-top: 0;
-        border-top: 0;
-      }
-      .project header {
-        display: grid;
-        gap: 0.25rem;
-      }
-      @media (min-width: 40rem) {
-        .project header {
-          display: flex;
-          align-items: baseline;
-          justify-content: space-between;
-          gap: 1rem;
-        }
-      }
-      .project h3 {
-        font-size: 1.3125rem;
-        font-weight: 700;
-        font-stretch: 110%;
-      }
-      .project .field {
-        color: var(--muted);
-        font-size: 1rem;
-      }
-      .project .claim {
-        font-size: 1.3125rem;
-        line-height: 1.45;
-      }
-      .project .claim strong {
-        font-weight: 700;
-        color: var(--red);
-        white-space: nowrap;
-      }
-      .stack {
-        color: var(--muted);
+        max-width: 38rem;
+        margin: 1rem auto 0;
         font-size: 0.9375rem;
       }
 
-      .job {
+      /* Experience cards */
+      .cards {
         display: grid;
-        gap: 0.5rem;
+        gap: 1.5rem;
+        margin-top: clamp(2.5rem, 5vw, 3.5rem);
       }
-      .job + .job {
-        margin-top: 2.25rem;
+      @media (min-width: 52rem) {
+        .cards {
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+        }
       }
-      .job .when {
-        color: var(--muted);
-        font-size: 0.9375rem;
-        font-variant-numeric: tabular-nums;
-      }
-      .job h3 {
-        font-size: 1.3125rem;
-        font-weight: 700;
-        font-stretch: 110%;
-        line-height: 1.3;
-      }
-      .job h3 span {
-        font-weight: 400;
-        color: var(--muted);
-        white-space: nowrap;
-      }
-      .job ul {
-        display: grid;
-        gap: 0.4rem;
-        margin-top: 0.25rem;
-      }
-      .job li {
-        padding-left: 1.1rem;
+      .card {
         position: relative;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1.25rem;
+        align-items: start;
+        padding: 2rem 1.75rem;
+        border-radius: 1rem;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            70% 90% at 75% 115%,
+            rgba(113, 39, 186, 0.7),
+            transparent 70%
+          ),
+          linear-gradient(160deg, #0a0416 20%, #170a2e);
+        box-shadow:
+          inset 0 2px 0 rgba(152, 87, 211, 0.9),
+          0 -6px 24px -12px rgba(152, 87, 211, 0.8);
       }
-      .job li::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0.75em;
-        width: 0.45rem;
-        height: 1px;
-        background: var(--red);
+      .card-icon {
+        display: grid;
+        place-items: center;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 1rem;
+        background: linear-gradient(145deg, #a869e0, #5b1e9e);
+        color: #fff;
+        box-shadow:
+          0 10px 24px rgba(113, 39, 186, 0.55),
+          inset 0 1px 0 rgba(255, 255, 255, 0.35);
       }
-      @media (min-width: 40rem) {
-        .job {
-          grid-template-columns: 9.5rem 1fr;
-          column-gap: 1.5rem;
-        }
-        .job .when {
-          padding-top: 0.25rem;
-        }
-        .job > :not(.when) {
-          grid-column: 2;
-        }
+      .card-icon svg {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
+      .card h3 {
+        font-size: 1.1875rem;
+        font-weight: 600;
+        line-height: 1.35;
+      }
+      .card .when {
+        color: var(--accent);
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-top: 0.2rem;
+      }
+      .card p:last-child {
+        color: var(--muted);
+        font-size: 0.9375rem;
+        margin-top: 0.6rem;
       }
       .edu {
-        padding-top: 2rem;
-        border-top: 1px solid var(--rule);
-        display: grid;
-        gap: 0.35rem;
-      }
-      .edu h3 {
-        font-size: 1.125rem;
-        font-weight: 700;
-      }
-      .edu p {
+        margin: 2rem auto 0;
+        max-width: 46rem;
+        text-align: center;
         color: var(--muted);
-        font-size: 1rem;
+        font-size: 0.9375rem;
+      }
+      .edu strong {
+        color: var(--text);
+        font-weight: 600;
       }
 
-      .skills {
+      /* Stack */
+      .stack {
+        text-align: center;
+      }
+      .stack h2 {
+        font-size: clamp(1.375rem, 3.4vw, 2rem);
+        font-weight: 500;
+        line-height: 1.4;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+      .stack .note {
+        margin-top: 0.5rem;
+      }
+      .tech {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.65rem;
+        max-width: 46rem;
+        margin: 2.5rem auto 0;
+      }
+      .tech li {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.45rem 0.9rem 0.45rem 0.55rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+      .tech img {
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: 0.25rem;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        filter: invert(1);
+      }
+      .orbit {
+        position: relative;
+        width: min(30rem, 100%);
+        aspect-ratio: 2.2;
+        margin: 3rem auto 0;
+      }
+      .orbit::before,
+      .orbit::after,
+      .orbit span::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        translate: -50% -50%;
+        border: 1px solid rgba(194, 155, 255, 0.18);
+        border-radius: 50%;
+      }
+      .orbit::before {
+        width: 100%;
+        height: 100%;
+      }
+      .orbit::after {
+        width: 72%;
+        height: 66%;
+      }
+      .orbit span::before {
+        width: 230%;
+        height: 150%;
+        border-color: rgba(194, 155, 255, 0.28);
+      }
+      .orbit span {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        translate: -50% -50%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
-        gap: 2rem 2.5rem;
-      }
-      .skills h3 {
-        font-size: 1rem;
+        place-items: center;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 30%, #a869e0, #4a1585 70%);
+        box-shadow: 0 0 60px 18px rgba(113, 39, 186, 0.55);
         font-weight: 700;
-        margin-bottom: 0.6rem;
-      }
-      .skills li {
-        font-size: 1rem;
-        color: var(--muted);
-        line-height: 1.75;
+        font-size: 1.375rem;
+        letter-spacing: 0.04em;
       }
 
-      .contact .body {
+      /* Projects */
+      .projects {
+        display: grid;
+        gap: clamp(4rem, 9vw, 7rem);
+        margin-top: clamp(3rem, 6vw, 4.5rem);
+      }
+      .project {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
         gap: 1.5rem;
+        align-items: center;
+      }
+      .project .field {
+        color: var(--accent);
+        font-weight: 500;
+        font-size: 0.9375rem;
+      }
+      .project h3 {
+        font-size: clamp(1.625rem, 3.6vw, 2.25rem);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-top: 0.25rem;
+      }
+      .glass {
+        position: relative;
+        z-index: 1;
+        margin-top: 1.25rem;
+        padding: 1.5rem 1.6rem;
+        border-radius: 1rem;
+        background: rgba(38, 20, 66, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+        color: #e6dff2;
+        font-size: 1rem;
+      }
+      .glass strong {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .project .built {
+        margin-top: 1rem;
+        color: var(--muted);
+        font-size: 0.875rem;
+      }
+      @media (min-width: 60rem) {
+        .project {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+          gap: 0;
+        }
+        .project .glass {
+          margin-right: -5rem;
+        }
+        .project:nth-child(even) .shot {
+          order: -1;
+        }
+        .project:nth-child(even) .text {
+          padding-left: 1rem;
+        }
+        .project:nth-child(even) .glass {
+          margin-right: 0;
+          margin-left: -5rem;
+        }
+      }
+
+      /* Illustrative mockups, drawn in CSS */
+      .shot {
+        position: relative;
+      }
+      .shot::before {
+        content: "";
+        position: absolute;
+        inset: 10% 5%;
+        background: rgba(113, 39, 186, 0.45);
+        filter: blur(60px);
+        z-index: -1;
+      }
+      @media (max-width: 26rem) {
+        /* Shrink the illustrations as a whole on small phones instead of reflowing them. */
+        .mock {
+          zoom: 0.82;
+        }
+      }
+      .mock {
+        border-radius: 14px;
+        overflow: hidden;
+        font-size: 11px;
+        line-height: 1.4;
+        color: #d9d2e9;
+        background: #0d0819;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+      }
+      .mock-bar {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        background: #120b22;
+      }
+      .mock-bar i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #3a2d55;
+      }
+      .mock-bar span {
+        margin-left: 10px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .mock-body {
+        padding: 14px;
+        min-height: 15rem;
+      }
+      .shot figcaption {
+        margin-top: 0.75rem;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.8125rem;
+      }
+      .pill {
+        display: inline-block;
+        padding: 2px 9px;
+        border-radius: 999px;
+        font-style: normal;
+        font-size: 10px;
+        font-weight: 600;
+      }
+      .ok {
+        background: rgba(74, 222, 128, 0.15);
+        color: #86efac;
+      }
+      .warn {
+        background: rgba(251, 191, 36, 0.15);
+        color: #fcd34d;
+      }
+      .info {
+        background: rgba(152, 87, 211, 0.25);
+        color: #d8b4fe;
+      }
+
+      .m-dash {
+        display: grid;
+        grid-template-columns: 2.25rem 1fr;
+        gap: 12px;
+      }
+      .m-side {
+        display: grid;
+        align-content: start;
+        gap: 10px;
+        padding-top: 2px;
+      }
+      .m-side b {
+        height: 22px;
+        border-radius: 6px;
+        background: #1f1535;
+      }
+      .m-side b:first-child {
+        background: var(--violet);
+      }
+      .m-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .m-stats div {
+        padding: 10px;
+        border-radius: 10px;
+        background: #160e29;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .m-stats small {
+        display: block;
+        color: #9d93b5;
+      }
+      .m-stats strong {
+        font-size: 17px;
+        color: #fff;
+      }
+      .m-rows {
+        margin-top: 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        overflow: hidden;
+      }
+      .m-rows div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 9px 12px;
+      }
+      .m-rows div + div {
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .m-chat {
+        display: grid;
+        gap: 10px;
+        align-content: start;
+      }
+      .msg {
+        max-width: 82%;
+        padding: 9px 12px;
+        border-radius: 12px;
+      }
+      .msg.me {
+        justify-self: end;
+        background: var(--violet);
+        color: #fff;
+        border-bottom-right-radius: 4px;
+      }
+      .msg.ai {
+        background: #1a1130;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-bottom-left-radius: 4px;
+      }
+      .m-bars {
+        display: flex;
+        align-items: end;
+        gap: 6px;
+        height: 64px;
+        margin-top: 10px;
+      }
+      .m-bars i {
+        flex: 1;
+        height: var(--h);
+        border-radius: 4px 4px 0 0;
+        background: linear-gradient(#c29bff, #7127ba);
+      }
+      .m-input {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 4px;
+        padding: 9px 12px;
+        border-radius: 10px;
+        background: #160e29;
+        color: #8a80a3;
+      }
+      .m-input b {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        background: var(--violet);
+      }
+
+      .m-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .m-prog {
+        display: grid;
+        grid-template-columns: 6.5rem 1fr 4.5rem;
+        gap: 10px;
+        align-items: center;
+        padding: 9px 0;
+      }
+      .m-prog + .m-prog {
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .m-prog i {
+        height: 7px;
+        border-radius: 99px;
+        background: #1f1535;
+        position: relative;
+        overflow: hidden;
+      }
+      .m-prog i::after {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: var(--w);
+        border-radius: inherit;
+        background: linear-gradient(90deg, #7127ba, #c29bff);
+      }
+      .m-prog em {
+        justify-self: end;
+      }
+
+      .m-cases {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 12px;
+      }
+      .m-list {
+        display: grid;
+        gap: 8px;
+        align-content: start;
+      }
+      .m-list li {
+        padding: 9px 11px;
+        border-radius: 10px;
+        background: #160e29;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .m-list li.on {
+        border-color: rgba(194, 155, 255, 0.6);
+        background: #22143c;
+      }
+      .m-list small,
+      .m-detail small {
+        display: block;
+        color: #9d93b5;
+      }
+      .m-detail {
+        padding: 12px;
+        border-radius: 10px;
+        background: #160e29;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .m-detail b {
+        color: #fff;
+        font-size: 13px;
+      }
+      .m-lines {
+        display: grid;
+        gap: 7px;
+        margin: 14px 0;
+      }
+      .m-lines i {
+        height: 7px;
+        border-radius: 99px;
+        background: #241a3a;
+        width: var(--w, 100%);
+      }
+      .m-btn {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 8px;
+        background: var(--violet);
+        color: #fff;
+        font-weight: 600;
+      }
+
+      /* Contact */
+      .contact {
+        text-align: center;
+      }
+      .contact > p {
+        max-width: 38rem;
+        margin: 1rem auto 0;
+        color: var(--muted);
+        font-size: 1.0625rem;
       }
       .email-row {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         align-items: center;
-        gap: 0.75rem 1.25rem;
+        gap: 1rem 1.25rem;
+        margin-top: 2.25rem;
       }
       .email {
-        font-size: clamp(1.25rem, 5.2vw, 2.5rem);
-        font-weight: 650;
-        font-stretch: 110%;
-        color: var(--ink);
+        font-size: clamp(1.25rem, 5vw, 2.25rem);
+        font-weight: 600;
+        text-decoration-color: rgba(194, 155, 255, 0.5);
+        text-underline-offset: 0.2em;
         overflow-wrap: anywhere;
       }
-      .contact .links {
-        gap: 1.5rem;
+      .email:hover {
+        text-decoration-color: var(--accent);
+      }
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-top: 2rem;
       }
 
       footer {
-        border-top: 1px solid var(--rule);
-        padding-block: 2rem 2.5rem;
+        border-top: 1px solid var(--line);
+        padding-block: 2rem;
+        text-align: center;
         color: var(--muted);
-        font-size: 0.9375rem;
+        font-size: 0.875rem;
       }
     </style>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
 
-    <header class="wrap top">
-      <a class="mark" href="#top"
-        >AS<span class="sr-only">, Aisha Saleem, back to top</span></a
-      >
-      <nav aria-label="Main">
-        <a href="#work">Work</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="theme" type="button" aria-label="Switch to dark theme">
-        <svg
-          class="sun"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          aria-hidden="true"
+    <header class="nav">
+      <div class="wrap nav-in">
+        <a class="logo" href="#top"
+          >Aisha<span class="sr-only"> Saleem, back to top</span></a
         >
-          <circle cx="12" cy="12" r="4" />
-          <path
-            d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
-          />
-        </svg>
-        <svg
-          class="moon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" />
-        </svg>
-      </button>
+        <nav aria-label="Main">
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
     </header>
 
     <main id="main">
       <section class="wrap hero" id="top">
-        <div class="name-wrap">
-          <h1 class="name" id="name"><span>Aisha</span> <span>Saleem</span></h1>
-          <span class="dim dim-x" aria-hidden="true"
-            ><span id="dim-w"></span
-          ></span>
-          <span class="dim dim-y" aria-hidden="true"
-            ><span id="dim-h"></span
-          ></span>
-        </div>
-        <div class="intro">
-          <p class="lede">
-            Full stack frontend developer. I build data-heavy React and Next.js
-            interfaces for enterprise SaaS, and the Node.js APIs behind them.
-          </p>
-          <p class="where">
-            <strong>Open to senior frontend and full stack roles.</strong>
-            Based in Sahiwal, Pakistan, working remotely with EST overlap.
-          </p>
-          <div class="actions">
-            <a class="btn btn-primary" href="mailto:aishasaleem8844@gmail.com"
-              >Email me</a
-            >
-            <a
-              class="btn"
-              href="Aisha_Saleem_Resume.pdf"
-              download
-              >Download résumé</a
-            >
+        <div class="hero-top">
+          <div class="avatar">
+            <img
+              src="avatar.webp"
+              alt="Aisha Saleem"
+              width="400"
+              height="400"
+              fetchpriority="high"
+            />
           </div>
-          <p class="links">
-            <a href="https://www.linkedin.com/in/aishasaleem88" rel="me"
-              >LinkedIn</a
-            >
-            <a href="https://github.com/aishasaleem8844" rel="me">GitHub</a>
-          </p>
-        </div>
-      </section>
-
-      <section class="wrap section about" aria-labelledby="about-h">
-        <h2 id="about-h">About</h2>
-        <div class="body">
           <div>
-            <p>
-              I've spent seven years shipping production web apps, mostly on the
-              dense side of the frontend: dashboards, admin panels, complex
-              forms and reusable component libraries for enterprise products in
-              real estate, pharma and legal tech. When a feature needs it, I
-              take it end to end, from Node.js and Express endpoints and MongoDB
-              or MySQL models to deploys on Vercel and AWS.
+            <h1 class="hello">
+              Hello! I'm <span class="accent">Aisha Saleem</span>
+            </h1>
+            <p class="kicker">A developer who makes</p>
+            <p class="slogan">
+              complex data <span class="grad">feel simple.</span>
             </p>
-            <p>
-              I use AI coding tools like Claude Code and Codex every day, and
-              I've shipped LLM-powered dashboards and chat interfaces to
-              production. I work in remote, distributed teams and keep my
-              updates clear and async.
+            <p class="sub">
+              Because a dashboard is only as good as the decisions it makes
+              easy.
             </p>
           </div>
         </div>
-      </section>
-
-      <section class="wrap section" id="work" aria-labelledby="work-h">
-        <h2 id="work-h">Selected work</h2>
-        <div class="body">
-          <p>
-            These are enterprise client products, so the code is private. I'm
-            happy to walk through any of them on a call.
-          </p>
-
-          <article class="project">
-            <header>
-              <h3>Lone Wolf Technologies</h3>
-              <p class="field">Real estate SaaS</p>
-            </header>
-            <p class="claim">
-              UI for North America's leading real estate platform, used by
-              <strong>1.5M+ agents</strong> and
-              <strong>10,000+ brokerages</strong>.
-            </p>
-            <p>
-              I wired GraphQL queries and mutations into Redux state across the
-              transaction management, back-office accounting and CRM modules.
-            </p>
-            <p class="stack">
-              <span class="sr-only">Built with </span>React, TypeScript,
-              GraphQL, Redux Toolkit
-            </p>
-          </article>
-
-          <article class="project">
-            <header>
-              <h3>Earnings Call</h3>
-              <p class="field">AI-powered SaaS</p>
-            </header>
-            <p class="claim">
-              AI dashboards and chat interfaces built on OpenAI, Claude and
-              Gemini APIs and RAG pipelines.
-            </p>
-            <p>
-              I own these features end to end: the React and TypeScript UI,
-              state management, Node.js and Express endpoints, data models and
-              deployment.
-            </p>
-            <p class="stack">
-              <span class="sr-only">Built with </span>React, TypeScript,
-              Node.js, Express, MongoDB, LLM APIs, RAG
-            </p>
-          </article>
-
-          <article class="project">
-            <header>
-              <h3>Norstella</h3>
-              <p class="field">Pharmaceutical data</p>
-            </header>
-            <p class="claim">
-              Server-rendered, responsive interfaces for a pharmaceutical data
-              platform that supports patients and providers.
-            </p>
-            <p>
-              I built reusable component libraries with Zustand state management
-              and optimized rendering for a data-heavy enterprise UI.
-            </p>
-            <p class="stack">
-              <span class="sr-only">Built with </span>React, JavaScript,
-              Bootstrap, Zustand, SSR
-            </p>
-          </article>
-
-          <article class="project">
-            <header>
-              <h3>Stretto</h3>
-              <p class="field">Legal tech</p>
-            </header>
-            <p class="claim">
-              Case management, claims administration and legal-noticing
-              interfaces for a market-leading legal-tech platform.
-            </p>
-            <p>
-              I built accessible, responsive layouts and integrated them with
-              backend APIs and JSON data flows.
-            </p>
-            <p class="stack">
-              <span class="sr-only">Built with </span>React, TypeScript, REST
-              and GraphQL APIs, Material UI
-            </p>
-          </article>
+        <p class="role" aria-hidden="true">
+          I'm a <span id="typed">Full Stack Developer</span
+          ><span class="caret"></span>
+        </p>
+        <p class="sr-only">I'm a full stack frontend developer.</p>
+        <p class="current">
+          Currently, I'm a Full Stack Developer at
+          <span class="co">Earnings Call</span>.
+        </p>
+        <p class="summary">
+          Seven years building data-heavy React and Next.js interfaces for
+          enterprise SaaS in real estate, pharma and legal tech, plus the
+          Node.js APIs behind them. Based in Sahiwal, Pakistan, working remotely
+          with EST overlap.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:aishasaleem8844@gmail.com"
+            >Email me</a
+          >
+          <a class="btn" href="Aisha_Saleem_Resume.pdf" download
+            >Download résumé</a
+          >
         </div>
       </section>
 
       <section class="wrap section" id="experience" aria-labelledby="exp-h">
-        <h2 id="exp-h">Experience</h2>
-        <div class="body">
-          <ol>
-            <li class="job">
+        <h2 class="title" id="exp-h">Work Experience</h2>
+        <div class="cards">
+          <article class="card">
+            <span class="card-icon" aria-hidden="true"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"
+                />
+                <path
+                  d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"
+                /></svg
+            ></span>
+            <div>
+              <h3>Full Stack Developer at Earnings Call</h3>
               <p class="when">Jan 2026 – Present</p>
-              <h3>Full Stack Developer <span>at Earnings Call</span></h3>
-              <ul>
-                <li>
-                  Build client-facing SaaS dashboards, admin panels, forms and
-                  task-monitoring views with React and TypeScript.
-                </li>
-                <li>
-                  Own features end to end, from UI and state to Node.js and
-                  Express REST endpoints, MongoDB and MySQL models, and
-                  deployment on Vercel and AWS.
-                </li>
-                <li>
-                  Built AI-powered dashboards and chat interfaces on LLM APIs
-                  and RAG pipelines.
-                </li>
-              </ul>
-            </li>
-            <li class="job">
+              <p>
+                Client-facing SaaS dashboards, admin panels and AI chat
+                interfaces in React and TypeScript, with Node.js and Express
+                APIs, MongoDB and MySQL, deployed on Vercel and AWS.
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <span class="card-icon" aria-hidden="true"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 3l9 5-9 5-9-5z" />
+                <path d="M3 13l9 5 9-5" /></svg
+            ></span>
+            <div>
+              <h3>Senior Frontend Developer at Macrosoft Pakistan</h3>
               <p class="when">Aug 2022 – Jan 2026</p>
-              <h3>
-                Senior Frontend Developer <span>at Macrosoft Pakistan</span>
-              </h3>
-              <ul>
-                <li>
-                  Delivered enterprise SaaS frontends across pharma tech, real
-                  estate and legal tech with React, TypeScript, Next.js and
-                  Tailwind CSS.
-                </li>
-                <li>
-                  Defined API contracts, JSON payloads and data models with
-                  backend engineers across REST and GraphQL.
-                </li>
-                <li>
-                  Introduced AI-augmented development with Claude Code, Codex
-                  and MCP integrations to speed up delivery.
-                </li>
-                <li>
-                  Led code reviews, enforced frontend standards and supported
-                  Vercel and AWS deployments.
-                </li>
-              </ul>
-            </li>
-            <li class="job">
+              <p>
+                Enterprise SaaS frontends for real estate, pharma and legal tech
+                with React, TypeScript, Next.js and Tailwind. Led code reviews
+                and introduced AI-augmented development.
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <span class="card-icon" aria-hidden="true"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                <rect x="14" y="14" width="7" height="7" rx="1.5" /></svg
+            ></span>
+            <div>
+              <h3>Frontend Developer at MayaBytes</h3>
               <p class="when">Sep 2021 – Aug 2022</p>
-              <h3>Frontend Developer <span>at MayaBytes</span></h3>
-              <ul>
-                <li>
-                  Turned UI/UX designs into clean, reusable components with
-                  Material UI and Bootstrap, working closely with designers.
-                </li>
-                <li>
-                  Integrated REST APIs, tuned performance and led bug fixes and
-                  code reviews.
-                </li>
-              </ul>
-            </li>
-            <li class="job">
+              <p>
+                Turned UI/UX designs into reusable Material UI and Bootstrap
+                components, integrated REST APIs and led bug fixes and code
+                reviews.
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <span class="card-icon" aria-hidden="true"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 12h4l2-6 4 12 2-6h6" /></svg
+            ></span>
+            <div>
+              <h3>Junior Frontend Developer at Techsurge</h3>
               <p class="when">Sep 2019 – Aug 2021</p>
-              <h3>Junior Frontend Developer <span>at Techsurge</span></h3>
-              <ul>
-                <li>
-                  Built accessible UI features for Psych Plus 2.0, a
-                  mental-health SaaS platform, in a team of ten.
-                </li>
-                <li>
-                  Built responsive product listing, cart and checkout flows for
-                  an e-commerce platform.
-                </li>
-              </ul>
-            </li>
-          </ol>
-          <div class="edu">
-            <h3>B.Sc. Computer Science, KASBIT University, 2017</h3>
-            <p>IU Scholarship Award and Leadership Excellence Award.</p>
-            <p>Frontend &amp; React Developer certification, Scrimba, 2019.</p>
-          </div>
+              <p>
+                Accessible UI for Psych Plus 2.0, a mental-health SaaS platform,
+                plus product listing, cart and checkout flows for an e-commerce
+                platform.
+              </p>
+            </div>
+          </article>
         </div>
+        <p class="edu">
+          <strong>B.Sc. Computer Science, KASBIT University, 2017.</strong> IU
+          Scholarship Award and Leadership Excellence Award. Frontend &amp;
+          React Developer certification, Scrimba, 2019.
+        </p>
       </section>
 
-      <section class="wrap section" aria-labelledby="skills-h">
-        <h2 id="skills-h">Skills</h2>
-        <div class="body">
-          <div class="skills">
-            <div>
-              <h3>Frontend</h3>
-              <ul>
-                <li>React</li>
-                <li>Next.js (SSR)</li>
-                <li>TypeScript</li>
-                <li>JavaScript (ES6+)</li>
-                <li>Tailwind CSS</li>
-                <li>Material UI</li>
-                <li>HTML and CSS</li>
-              </ul>
+      <section class="wrap section stack" aria-labelledby="stack-h">
+        <h2 id="stack-h">
+          I'm looking to join a team as a
+          <span class="accent">senior frontend or full stack developer</span>
+        </h2>
+        <p class="note">
+          Remote, with EST overlap. These are the tools I use every day.
+        </p>
+        <ul class="tech">
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/react.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />React
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/nextdotjs.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />Next.js
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/typescript.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />TypeScript
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/javascript.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />JavaScript
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/tailwindcss.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />Tailwind CSS
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/mui.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />Material UI
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/redux.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />Redux Toolkit
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/graphql.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />GraphQL
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/nodedotjs.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />Node.js
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/express.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />Express
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/mongodb.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />MongoDB
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/mysql.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />MySQL
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/vercel.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />Vercel
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/git.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />Git
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/claude.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />Claude Code
+          </li>
+          <li>
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@16.32.0/icons/googlegemini.svg"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+            />LLM APIs and RAG
+          </li>
+        </ul>
+        <div class="orbit" aria-hidden="true"><span>AS</span></div>
+      </section>
+
+      <section class="wrap section" id="projects" aria-labelledby="proj-h">
+        <h2 class="title" id="proj-h">Featured Projects</h2>
+        <p class="note">
+          Enterprise client work, so the code is private. I'm happy to walk
+          through any of it on a call.
+        </p>
+        <div class="projects">
+          <article class="project">
+            <div class="text">
+              <p class="field">Real estate SaaS</p>
+              <h3>Lone Wolf Technologies</h3>
+              <div class="glass">
+                <p>
+                  UI for North America's leading real estate platform, used by
+                  <strong>1.5M+ agents</strong> and
+                  <strong>10,000+ brokerages</strong>. I wired GraphQL queries
+                  and mutations into Redux state across the transaction
+                  management, back-office accounting and CRM modules.
+                </p>
+              </div>
+              <p class="built">React, TypeScript, GraphQL, Redux Toolkit</p>
             </div>
-            <div>
-              <h3>UI engineering</h3>
-              <ul>
-                <li>Component libraries</li>
-                <li>Accessible, responsive UI</li>
-                <li>Complex forms</li>
-                <li>Dashboards</li>
-                <li>Performance tuning</li>
-              </ul>
+            <figure class="shot">
+              <div class="mock" aria-hidden="true">
+                <div class="mock-bar">
+                  <i></i><i></i><i></i><span>Transactions</span>
+                </div>
+                <div class="mock-body m-dash">
+                  <div class="m-side"><b></b><b></b><b></b><b></b><b></b></div>
+                  <div>
+                    <div class="m-stats">
+                      <div><small>Active</small><strong>128</strong></div>
+                      <div><small>Pending</small><strong>34</strong></div>
+                      <div><small>Closed</small><strong>$4.2M</strong></div>
+                    </div>
+                    <div class="m-rows">
+                      <div>
+                        <span>1248 Oak Street</span
+                        ><em class="pill ok">Closed</em>
+                      </div>
+                      <div>
+                        <span>77 Harbor View</span
+                        ><em class="pill warn">Pending</em>
+                      </div>
+                      <div>
+                        <span>310 Elm Avenue</span
+                        ><em class="pill info">Active</em>
+                      </div>
+                      <div>
+                        <span>5 Lakeside Court</span
+                        ><em class="pill info">Active</em>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <figcaption>
+                Illustrative mockup, not a product screenshot
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="project">
+            <div class="text">
+              <p class="field">AI-powered SaaS</p>
+              <h3>AI dashboards at Earnings Call</h3>
+              <div class="glass">
+                <p>
+                  AI dashboards and chat interfaces built on
+                  <strong>OpenAI, Claude and Gemini</strong> APIs and RAG
+                  pipelines. I own these features end to end: the React and
+                  TypeScript UI, state, Node.js and Express endpoints, data
+                  models and deployment.
+                </p>
+              </div>
+              <p class="built">
+                React, TypeScript, Node.js, Express, MongoDB, LLM APIs, RAG
+              </p>
             </div>
-            <div>
-              <h3>State and data</h3>
-              <ul>
-                <li>Redux Toolkit</li>
-                <li>Zustand</li>
-                <li>Context API</li>
-                <li>REST and GraphQL</li>
-                <li>WebSockets</li>
-              </ul>
+            <figure class="shot">
+              <div class="mock" aria-hidden="true">
+                <div class="mock-bar">
+                  <i></i><i></i><i></i><span>Assistant</span>
+                </div>
+                <div class="mock-body m-chat">
+                  <div class="msg me">Summarise this quarter's highlights</div>
+                  <div class="msg ai">
+                    Revenue grew in every region this quarter, led by
+                    subscriptions.
+                    <div class="m-bars">
+                      <i style="--h: 38%"></i><i style="--h: 52%"></i
+                      ><i style="--h: 47%"></i><i style="--h: 66%"></i
+                      ><i style="--h: 74%"></i><i style="--h: 92%"></i>
+                    </div>
+                  </div>
+                  <div class="m-input">Ask about any call<b></b></div>
+                </div>
+              </div>
+              <figcaption>
+                Illustrative mockup, not a product screenshot
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="project">
+            <div class="text">
+              <p class="field">Pharmaceutical data</p>
+              <h3>Norstella</h3>
+              <div class="glass">
+                <p>
+                  Server-rendered, responsive interfaces for a pharmaceutical
+                  data platform that supports patients and providers. I built
+                  <strong>reusable component libraries</strong> with Zustand
+                  state and optimized rendering for a data-heavy enterprise UI.
+                </p>
+              </div>
+              <p class="built">React, JavaScript, Bootstrap, Zustand, SSR</p>
             </div>
-            <div>
-              <h3>Backend and cloud</h3>
-              <ul>
-                <li>Node.js and Express</li>
-                <li>MongoDB and MySQL</li>
-                <li>Authentication</li>
-                <li>Vercel and AWS</li>
-                <li>CI/CD, Git, GitHub</li>
-              </ul>
+            <figure class="shot">
+              <div class="mock" aria-hidden="true">
+                <div class="mock-bar">
+                  <i></i><i></i><i></i><span>Pipeline</span>
+                </div>
+                <div class="mock-body">
+                  <div class="m-head">
+                    <span>Pipeline overview</span
+                    ><em class="pill info">All phases</em>
+                  </div>
+                  <div class="m-prog">
+                    <span>Compound A</span><i style="--w: 88%"></i
+                    ><em class="pill ok">Phase III</em>
+                  </div>
+                  <div class="m-prog">
+                    <span>Compound B</span><i style="--w: 64%"></i
+                    ><em class="pill info">Phase II</em>
+                  </div>
+                  <div class="m-prog">
+                    <span>Compound C</span><i style="--w: 57%"></i
+                    ><em class="pill info">Phase II</em>
+                  </div>
+                  <div class="m-prog">
+                    <span>Compound D</span><i style="--w: 30%"></i
+                    ><em class="pill warn">Phase I</em>
+                  </div>
+                  <div class="m-prog">
+                    <span>Compound E</span><i style="--w: 22%"></i
+                    ><em class="pill warn">Phase I</em>
+                  </div>
+                </div>
+              </div>
+              <figcaption>
+                Illustrative mockup, not a product screenshot
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="project">
+            <div class="text">
+              <p class="field">Legal tech</p>
+              <h3>Stretto</h3>
+              <div class="glass">
+                <p>
+                  Case management, claims administration and legal-noticing
+                  interfaces for a market-leading legal-tech platform. I built
+                  <strong>accessible, responsive layouts</strong> and integrated
+                  them with backend APIs and JSON data flows.
+                </p>
+              </div>
+              <p class="built">
+                React, TypeScript, REST and GraphQL APIs, Material UI
+              </p>
             </div>
-            <div>
-              <h3>AI and LLMs</h3>
-              <ul>
-                <li>Claude Code, Codex</li>
-                <li>MCP servers</li>
-                <li>OpenAI, Claude, Gemini APIs</li>
-                <li>RAG</li>
-                <li>Vercel AI SDK</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Languages</h3>
-              <ul>
-                <li>English</li>
-                <li>Urdu</li>
-                <li>Punjabi</li>
-              </ul>
-            </div>
-          </div>
+            <figure class="shot">
+              <div class="mock" aria-hidden="true">
+                <div class="mock-bar">
+                  <i></i><i></i><i></i><span>Cases</span>
+                </div>
+                <div class="mock-body m-cases">
+                  <ul class="m-list">
+                    <li class="on">
+                      <b>Case 24-1187</b><small>Claims review</small>
+                    </li>
+                    <li><b>Case 24-1163</b><small>Notice sent</small></li>
+                    <li>
+                      <b>Case 24-1150</b><small>Awaiting documents</small>
+                    </li>
+                    <li><b>Case 24-1142</b><small>Closed</small></li>
+                  </ul>
+                  <div class="m-detail">
+                    <b>Case 24-1187</b><small>Claims review</small>
+                    <div class="m-lines">
+                      <i></i><i style="--w: 86%"></i><i style="--w: 70%"></i
+                      ><i style="--w: 92%"></i><i style="--w: 54%"></i>
+                    </div>
+                    <span class="m-btn">Send notice</span>
+                  </div>
+                </div>
+              </div>
+              <figcaption>
+                Illustrative mockup, not a product screenshot
+              </figcaption>
+            </figure>
+          </article>
         </div>
       </section>
 
@@ -983,65 +1486,72 @@
         id="contact"
         aria-labelledby="contact-h"
       >
-        <h2 id="contact-h">Contact</h2>
-        <div class="body">
-          <p>Email is the fastest way to reach me.</p>
-          <div class="email-row">
-            <a class="email" href="mailto:aishasaleem8844@gmail.com"
-              >aishasaleem8844@gmail.com</a
-            >
-            <button
-              class="btn copy"
-              type="button"
-              data-email="aishasaleem8844@gmail.com"
-            >
-              Copy email
-            </button>
-            <span class="sr-only" role="status" id="copy-status"></span>
-          </div>
-          <p class="links">
-            <a href="https://www.linkedin.com/in/aishasaleem88" rel="me"
-              >LinkedIn</a
-            >
-            <a href="https://github.com/aishasaleem8844" rel="me">GitHub</a>
-            <a href="Aisha_Saleem_Resume.pdf" download
-              >Résumé (PDF)</a
-            >
-          </p>
+        <h2 class="title" id="contact-h">Contact</h2>
+        <p>
+          I'm looking for a senior frontend or full stack role on a remote team.
+          Have a role or a project in mind? Email is the fastest way to reach
+          me.
+        </p>
+        <div class="email-row">
+          <a class="email" href="mailto:aishasaleem8844@gmail.com"
+            >aishasaleem8844@gmail.com</a
+          >
+          <button
+            class="btn copy"
+            type="button"
+            data-email="aishasaleem8844@gmail.com"
+          >
+            Copy email
+          </button>
+          <span class="sr-only" role="status" id="copy-status"></span>
         </div>
+        <p class="links">
+          <a
+            class="btn"
+            href="https://www.linkedin.com/in/aishasaleem88"
+            rel="me"
+            >LinkedIn</a
+          >
+          <a class="btn" href="https://github.com/aishasaleem8844" rel="me"
+            >GitHub</a
+          >
+          <a class="btn" href="Aisha_Saleem_Resume.pdf" download
+            >Résumé (PDF)</a
+          >
+        </p>
       </section>
     </main>
 
     <footer class="wrap">© 2026 Aisha Saleem</footer>
 
     <script>
-      const root = document.documentElement;
-      const dark = matchMedia("(prefers-color-scheme: dark)");
-      const themeBtn = document.querySelector(".theme");
-      const isDark = () =>
-        (root.dataset.theme || (dark.matches ? "dark" : "light")) === "dark";
-      const syncLabel = () =>
-        themeBtn.setAttribute(
-          "aria-label",
-          isDark() ? "Switch to light theme" : "Switch to dark theme",
-        );
-      syncLabel();
-      dark.addEventListener("change", syncLabel);
-      themeBtn.addEventListener("click", () => {
-        root.dataset.theme = isDark() ? "light" : "dark";
-        try {
-          localStorage.setItem("theme", root.dataset.theme);
-        } catch {}
-        syncLabel();
-      });
-
-      // Redlines show the name's real rendered size, so they track the load animation and any resize.
-      const w = document.getElementById("dim-w"),
-        h = document.getElementById("dim-h");
-      new ResizeObserver(([e]) => {
-        w.textContent = Math.round(e.borderBoxSize[0].inlineSize);
-        h.textContent = Math.round(e.borderBoxSize[0].blockSize);
-      }).observe(document.getElementById("name"));
+      // Typing line: cycles roles; stays on the first one for reduced motion.
+      const roles = [
+        "Full Stack Developer",
+        "Frontend Engineer",
+        "React and Next.js Developer",
+      ];
+      const typed = document.getElementById("typed");
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        let r = 0,
+          i = roles[0].length,
+          deleting = true;
+        const tick = () => {
+          i += deleting ? -1 : 1;
+          typed.textContent = roles[r].slice(0, i);
+          let wait = deleting ? 45 : 85;
+          if (!deleting && i === roles[r].length) {
+            deleting = true;
+            wait = 1800;
+          } else if (deleting && i === 0) {
+            deleting = false;
+            r = (r + 1) % roles.length;
+            wait = 350;
+          }
+          setTimeout(tick, wait);
+        };
+        setTimeout(tick, 2200);
+      }
 
       const copyBtn = document.querySelector(".copy"),
         status = document.getElementById("copy-status");
