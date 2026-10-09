@@ -110,7 +110,8 @@
       }
       body {
         margin: 0;
-        background: var(--white);
+        /* Faint dot grid behind the whole page; tinted bands are translucent so it shows through. */
+        background: radial-gradient(rgba(24, 134, 75, 0.13) 1.1px, transparent 1.3px) 0 0 / 22px 22px, var(--white);
         color: var(--ink);
         font:
           400 1rem/1.7 Poppins,
@@ -268,7 +269,10 @@
 
       /* Hero */
       .hero-band {
-        background: var(--mint);
+        background:
+          radial-gradient(rgba(24, 134, 75, 0.16) 1.1px, transparent 1.3px) 0 0 / 22px 22px,
+          radial-gradient(50% 60% at 85% 20%, rgba(242, 106, 33, 0.14), transparent 70%),
+          var(--mint);
         overflow: hidden;
       }
       .hero {
@@ -441,7 +445,7 @@
       }
 
       .strip {
-        background: var(--mint-2);
+        background: rgba(241, 251, 242, 0.85);
         border-block: 1px solid var(--line);
       }
       .strip-in {
@@ -471,10 +475,57 @@
 
       /* Sections */
       .section {
+        position: relative;
+        isolation: isolate;
         padding-block: clamp(4rem, 9vw, 6.5rem);
       }
       .tinted {
-        background: var(--mint-2);
+        background: rgba(241, 251, 242, 0.75);
+      }
+      /* Clip the glows here rather than on body, which would leak to the viewport and still pan on phones. */
+      main {
+        overflow-x: clip;
+      }
+      /* Soft glows behind sections. Gradients only, no blur filter, so they cost nothing to paint. */
+      #experience::before,
+      #experience::after,
+      #projects::before,
+      #projects::after,
+      #contact::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        width: 34rem;
+        height: 34rem;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      #experience::before {
+        top: 2rem;
+        left: -14rem;
+        background: radial-gradient(closest-side, rgba(24, 134, 75, 0.16), transparent);
+      }
+      #experience::after {
+        bottom: -6rem;
+        right: -14rem;
+        background: radial-gradient(closest-side, rgba(242, 106, 33, 0.13), transparent);
+      }
+      #projects::before {
+        top: 22%;
+        right: -16rem;
+        background: radial-gradient(closest-side, rgba(242, 106, 33, 0.12), transparent);
+      }
+      #projects::after {
+        bottom: 12%;
+        left: -16rem;
+        background: radial-gradient(closest-side, rgba(24, 134, 75, 0.15), transparent);
+      }
+      #contact::before {
+        top: -4rem;
+        left: 50%;
+        width: 48rem;
+        translate: -50% 0;
+        background: radial-gradient(closest-side, rgba(24, 134, 75, 0.14), transparent);
       }
       .head {
         text-align: center;
@@ -1114,6 +1165,22 @@
             transform-origin: left;
             animation: grow-x linear both;
             animation-timeline: scroll(root);
+          }
+        }
+
+        #experience::before,
+        #experience::after,
+        #projects::before,
+        #projects::after {
+          animation: drift 18s ease-in-out infinite;
+        }
+        #experience::after,
+        #projects::after {
+          animation-delay: -9s;
+        }
+        @keyframes drift {
+          50% {
+            translate: 3rem -2rem;
           }
         }
 
