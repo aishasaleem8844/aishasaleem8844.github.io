@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Aisha Saleem · Full Stack Frontend Developer</title>
+<meta name="description" content="Aisha Saleem, frontend-focused full stack developer with 6+ years building production web apps with React, Next.js, TypeScript and Node.js.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aisha Saleem · Full Stack Frontend Developer">
+<meta property="og:description" content="Frontend-focused full stack developer with 6+ years building production web apps with React, Next.js, TypeScript and Node.js.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231c1b19'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='28' fill='%23c9a86a'%3EAS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root {
+    --bg: #faf8f4;
+    --surface: #f3efe7;
+    --text: #1c1b19;
+    --muted: #6b665d;
+    --line: #e4ddd0;
+    --accent: #7d6236;
+    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --ease: cubic-bezier(.2, .7, .2, 1);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121110;
+      --surface: #1a1917;
+      --text: #ece7de;
+      --muted: #a39d92;
+      --line: #2c2a26;
+      --accent: #c9a86a;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: 72px; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16.5px/1.7 var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: color-mix(in srgb, var(--accent) 28%, transparent); }
+  h1, h2, h3, p { margin: 0; }
+  ul { margin: 0; padding: 0; }
+  a { color: inherit; }
+  a:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  /* Reading progress, scroll-driven where supported */
+  .progress {
+    position: fixed; inset: 0 0 auto; height: 2px; z-index: 20;
+    background: var(--accent); transform: scaleX(0); transform-origin: 0 50%;
+  }
+  @supports (animation-timeline: scroll()) {
+    .progress { animation: grow linear both; animation-timeline: scroll(root); }
+  }
+  @keyframes grow { to { transform: scaleX(1); } }
+
+  /* Top bar */
+  .top {
+    position: sticky; top: 0; z-index: 10;
+    border-bottom: 1px solid transparent;
+    transition: background-color .3s, border-color .3s;
+  }
+  .top.scrolled {
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-color: var(--line);
+  }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 64px; }
+  .mark { font: 600 1.35rem/1 var(--serif); letter-spacing: .04em; text-decoration: none; }
+  nav { display: flex; gap: 28px; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; }
+  nav a { position: relative; text-decoration: none; color: var(--muted); transition: color .25s; }
+  nav a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px;
+    background: var(--accent); transform: scaleX(0); transform-origin: right;
+    transition: transform .3s var(--ease);
+  }
+  nav a:hover, nav a:focus-visible { color: var(--text); }
+  nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Hero */
+  body { overflow-x: clip; }
+  .hero {
+    position: relative; isolation: isolate;
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 48px;
+    padding: 112px 0 88px;
+  }
+  .hero::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    width: 560px; height: 560px; right: -160px; top: -60px;
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 16%, transparent), transparent);
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift { to { transform: translate(-90px, 60px) scale(1.12); } }
+  .eyebrow { font-size: .78rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); }
+  h1 {
+    font: 500 clamp(3.2rem, 8vw, 5.75rem)/1 var(--serif);
+    letter-spacing: -.01em; margin-top: 20px;
+  }
+  .lede { max-width: 34ch; font: italic 500 clamp(1.35rem, 2.6vw, 1.75rem)/1.4 var(--serif); color: var(--muted); margin-top: 24px; }
+  .meta { color: var(--muted); font-size: .92rem; margin-top: 20px; }
+  .meta + .meta { margin-top: 2px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 26px; border: 1px solid var(--text); border-radius: 2px;
+    background: var(--text); color: var(--bg);
+    font-size: .78rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; text-decoration: none;
+    transition: background-color .25s, border-color .25s, color .25s;
+  }
+  .btn span { transition: transform .25s var(--ease); }
+  .btn:hover { background: var(--accent); border-color: var(--accent); }
+  .btn:hover span { transform: translateX(4px); }
+  .btn:active span { transform: none; }
+  .btn.ghost { background: transparent; color: var(--text); border-color: var(--line); }
+  .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .mono { position: relative; width: 160px; height: 160px; display: grid; place-items: center; }
+  .mono svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+  .mono circle {
+    fill: none; stroke: var(--accent); stroke-width: 1;
+    stroke-dasharray: 1; stroke-dashoffset: 1;
+    animation: draw 1.8s var(--ease) .4s forwards;
+  }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .mono span { font: 500 3.2rem/1 var(--serif); letter-spacing: .04em; }
+
+  .stats { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+  .stats li { padding: 32px 32px 40px; border-left: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
+  .stats li:first-child { border-left: 0; padding-left: 0; }
+  .stats strong { display: block; font: 500 3rem/1.1 var(--serif); color: var(--text); margin-bottom: 6px; }
+
+  /* Editorial sections */
+  .section {
+    display: grid; grid-template-columns: 220px 1fr; gap: 56px;
+    padding: 96px 0; border-top: 1px solid var(--line);
+  }
+  .section-head { position: sticky; top: 104px; align-self: start; }
+  .num { display: block; font-size: .75rem; font-weight: 500; letter-spacing: .22em; color: var(--accent); }
+  h2 { font: 500 2.4rem/1.1 var(--serif); margin-top: 10px; }
+  .lead { font: 500 1.6rem/1.45 var(--serif); }
+  .section-body > p + p { margin-top: 20px; color: var(--muted); }
+
+  .rows > div { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 20px 0; border-top: 1px solid var(--line); }
+  .rows > div:first-child { border-top: 0; padding-top: 0; }
+  .rows h3 { font: italic 500 1.3rem/1.4 var(--serif); }
+  .rows p, .rows li { color: var(--muted); }
+  .rows ul { list-style: none; }
+  .rows strong { color: var(--text); font-weight: 500; }
+
+  .job { position: relative; padding: 0 0 48px 36px; border-left: 1px solid var(--line); }
+  .job:last-child { padding-bottom: 0; }
+  .job::before {
+    content: ""; position: absolute; left: -5px; top: 6px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--bg); border: 1px solid var(--accent);
+  }
+  .when { font-size: .75rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+  .job h3 { font: 500 1.75rem/1.25 var(--serif); margin-top: 8px; }
+  .org { color: var(--muted); }
+  .job ul { padding-left: 18px; margin-top: 14px; color: var(--muted); }
+  .job li + li { margin-top: 6px; }
+  .job li::marker { color: var(--accent); }
+
+  .cards { display: grid; gap: 20px; }
+  .card { padding: 36px; background: var(--surface); border-radius: 2px; }
+  .card h3 { font: 500 1.9rem/1.2 var(--serif); margin-top: 10px; }
+  .card p { color: var(--muted); margin-top: 12px; }
+  .card .tags { color: var(--text); font-size: .72rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; margin-top: 20px; }
+
+  footer { border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 32px; padding-bottom: 40px; color: var(--muted); font-size: .85rem; }
+  footer a { text-decoration: none; transition: color .25s; }
+  footer a:hover { color: var(--accent); }
+
+  /* Scroll reveal: hidden only when JS can reveal it again */
+  @keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+  .js [data-reveal] { opacity: 0; }
+  .js [data-reveal].in { opacity: 1; animation: rise .9s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 110ms); }
+
+  @media (max-width: 860px) {
+    .section { grid-template-columns: 1fr; gap: 28px; padding: 72px 0; }
+    .section-head { position: static; }
+    .rows > div { grid-template-columns: 1fr; gap: 6px; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    .mark { display: none; }
+    .top .wrap { justify-content: center; }
+    nav { gap: 20px; font-size: .72rem; letter-spacing: .1em; }
+    nav .wide { display: none; }
+    .hero { grid-template-columns: 1fr; gap: 32px; padding: 48px 0 56px; }
+    .hero::before { width: 380px; height: 380px; right: -180px; top: -80px; }
+    .mono { order: -1; width: 104px; height: 104px; }
+    .mono span { font-size: 2.1rem; }
+    .stats { grid-template-columns: 1fr; }
+    .stats li, .stats li:first-child { border-left: 0; border-top: 1px solid var(--line); padding: 24px 0; }
+    .stats li:first-child { border-top: 0; }
+    .card { padding: 28px 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .mono circle { stroke-dashoffset: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Back to top">AS</a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a class="wide" href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <div>
+      <p class="eyebrow" data-reveal>Full Stack Frontend Developer</p>
+      <h1 data-reveal style="--i:1">Aisha Saleem</h1>
+      <p class="lede" data-reveal style="--i:2">I build fast, accessible interfaces for enterprise SaaS, from component libraries to AI-powered dashboards.</p>
+      <div data-reveal style="--i:3">
+        <p class="meta">React · Next.js · TypeScript · Tailwind CSS · Node.js</p>
+        <p class="meta">Pakistan · Remote, EST overlap</p>
+      </div>
+      <div class="actions" data-reveal style="--i:4">
+        <a class="btn" href="https://www.linkedin.com/in/aishasaleem88/">LinkedIn <span aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="https://github.com/aishasaleem8844">GitHub <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="mono" aria-hidden="true" data-reveal style="--i:2">
+      <svg viewBox="0 0 160 160"><circle cx="80" cy="80" r="79" pathLength="1"/></svg>
+      <span>AS</span>
+    </div>
+  </div>
+
+  <ul class="stats">
+    <li data-reveal><strong>6+</strong>years shipping production web apps</li>
+    <li data-reveal style="--i:1"><strong>1.5M+</strong>agents on a real estate platform I helped build</li>
+    <li data-reveal style="--i:2"><strong>3</strong>industries: pharma-tech, real estate, legal-tech</li>
+  </ul>
+
+  <section id="about" class="section">
+    <div class="section-head" data-reveal><span class="num">01</span><h2>About</h2></div>
+    <div class="section-body">
+      <p class="lead" data-reveal>I'm a frontend-focused full stack developer with 6+ years of building production web applications, specializing in React, Next.js and TypeScript.</p>
+      <p data-reveal style="--i:1">I use Node.js and Express to ship features end to end: UI and state, REST and GraphQL APIs, databases, and deployment on Vercel and AWS. I build responsive, accessible, high-performance interfaces, reusable component libraries and data-heavy dashboards for enterprise SaaS in pharma-tech, real estate and legal-tech.</p>
+      <p data-reveal style="--i:2">I use AI coding tools every day, have shipped LLM-powered features to production, and keep communication clear in remote, distributed teams.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <div class="section-head" data-reveal><span class="num">02</span><h2>Skills</h2></div>
+    <div class="section-body rows">
+      <div data-reveal><h3>Frontend</h3><p>React.js · Next.js (SSR) · TypeScript · JavaScript (ES6+) · HTML5 · CSS3 · Tailwind CSS · Material UI · Bootstrap</p></div>
+      <div data-reveal><h3>UI engineering</h3><p>Reusable component libraries · Responsive &amp; accessible UI · Complex forms · Dashboards · Performance optimization · Cross-browser compatibility</p></div>
+      <div data-reveal><h3>State &amp; data</h3><p>Redux Toolkit · Zustand · Context API · REST · GraphQL · WebSockets · JSON data flows</p></div>
+      <div data-reveal><h3>Backend &amp; cloud</h3><p>Node.js · Express.js · Authentication · MySQL · MongoDB · Vercel · AWS · CI/CD · Git &amp; GitHub · Code reviews</p></div>
+      <div data-reveal><h3>AI &amp; LLMs</h3><p>Claude Code · OpenAI Codex · MCP servers · OpenAI / Claude / Gemini APIs · RAG · Vercel AI SDK · AI chat &amp; dashboard UIs</p></div>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <div class="section-head" data-reveal><span class="num">03</span><h2>Experience</h2></div>
+    <div class="section-body">
+      <article class="job" data-reveal>
+        <p class="when">Jan 2026 – Present</p>
+        <h3>Full Stack Developer</h3>
+        <p class="org">SaaS company</p>
+        <ul>
+          <li>Build client-facing SaaS dashboards, admin panels, forms and task-monitoring views with React and TypeScript.</li>
+          <li>Own features end to end: UI and state, Node.js / Express REST endpoints, MongoDB / MySQL data models, and deployment.</li>
+          <li>Built AI-powered dashboards and chat interfaces on OpenAI, Claude and Gemini APIs with RAG pipelines.</li>
+          <li>Debug and optimize production features on Vercel and AWS.</li>
+        </ul>
+      </article>
+      <article class="job" data-reveal>
+        <p class="when">Aug 2022 – Jan 2026</p>
+        <h3>Senior Frontend Developer</h3>
+        <p class="org">Macrosoft Pakistan</p>
+        <ul>
+          <li>Delivered enterprise SaaS frontends for pharma-tech, real estate and legal-tech clients with React, Next.js, TypeScript and Tailwind CSS.</li>
+          <li>Built reusable components, dashboards, admin panels and complex forms, and optimized rendering for data-heavy UIs.</li>
+          <li>Defined API contracts, JSON payloads and data models with backend engineers across REST and GraphQL.</li>
+          <li>Introduced AI-augmented development and MCP integrations, led code reviews and set frontend standards.</li>
+        </ul>
+      </article>
+      <article class="job" data-reveal>
+        <p class="when">Sep 2021 – Aug 2022</p>
+        <h3>Frontend Developer</h3>
+        <p class="org">MayaBytes</p>
+        <ul>
+          <li>Turned UI/UX designs into clean, reusable React components with Material UI and Bootstrap.</li>
+          <li>Integrated REST APIs, improved performance, and led bug fixes and code reviews.</li>
+        </ul>
+      </article>
+      <article class="job" data-reveal>
+        <p class="when">Sep 2019 – Aug 2021</p>
+        <h3>Junior Frontend Developer</h3>
+        <p class="org">Techsurge</p>
+        <ul>
+          <li>Built accessible UI features for Psych Plus 2.0, a mental-health SaaS platform.</li>
+          <li>Built product listing, cart and checkout flows for an e-commerce platform.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="section-head" data-reveal><span class="num">04</span><h2>Selected projects</h2></div>
+    <div class="section-body cards">
+      <article class="card" data-reveal>
+        <span class="num">Real estate</span>
+        <h3>Lone Wolf Technologies</h3>
+        <p>UI for North America's leading real estate platform, serving 1.5M+ agents and 10,000+ brokerages. Wired GraphQL queries and mutations into Redux across transaction management, back-office accounting and CRM.</p>
+        <p class="tags">React · TypeScript · GraphQL · Redux Toolkit</p>
+      </article>
+      <article class="card" data-reveal>
+        <span class="num">Pharma-tech</span>
+        <h3>Norstella</h3>
+        <p>Server-rendered, responsive interfaces for a pharmaceutical data platform supporting patients and providers, with reusable component libraries and optimized rendering.</p>
+        <p class="tags">React · JavaScript · Zustand · SSR · Bootstrap</p>
+      </article>
+      <article class="card" data-reveal>
+        <span class="num">Legal-tech</span>
+        <h3>Stretto</h3>
+        <p>Case management, claims administration and legal-noticing interfaces for a market-leading legal-tech SaaS platform.</p>
+        <p class="tags">React · TypeScript · REST / GraphQL · Material UI</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="education" class="section">
+    <div class="section-head" data-reveal><span class="num">05</span><h2>Education</h2></div>
+    <div class="section-body rows">
+      <div data-reveal><h3>Degree</h3><p><strong>B.Sc. Computer Science</strong>, KASBIT University, 2017<br>IU Scholarship Award · Leadership Excellence Award</p></div>
+      <div data-reveal><h3>Certifications</h3><ul><li>Frontend &amp; React Developer, Scrimba (2019)</li><li>AI-Augmented Development: Prompt Engineering &amp; LLM Integration (self-directed, ongoing)</li></ul></div>
+      <div data-reveal><h3>Languages</h3><p>English · Urdu · Punjabi</p></div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="section-head" data-reveal><span class="num">06</span><h2>Contact</h2></div>
+    <div class="section-body">
+      <p class="lead" data-reveal>The best way to reach me is LinkedIn. My code lives on GitHub.</p>
+      <div class="actions" data-reveal style="--i:1">
+        <a class="btn" href="https://www.linkedin.com/in/aishasaleem88/">LinkedIn <span aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="https://github.com/aishasaleem8844">GitHub <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Aisha Saleem</p>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+
+  const bar = document.querySelector('.top');
+  const onScroll = () => bar.classList.toggle('scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Publish only the site; keeps the resume (phone number) out of the public repo
+*
+!index.html
+!.gitignore
